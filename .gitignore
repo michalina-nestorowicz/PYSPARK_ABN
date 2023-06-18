@@ -1,0 +1,6 @@
+*.log*
+*venv_pyspark_37*
+assignment/*
+.vscode/*
+./pytest_cache
+*.pyc

@@ -1,0 +1,28 @@
+version: 1
+disable_existing_loggers: False
+
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    datefnt: '%Y-%m-%d_%H:%M:%S'
+
+handlers:
+  console:
+    class : logging.StreamHandler
+    formatter: simple
+    level   : DEBUG
+    stream  : ext://sys.stdout
+
+  file:
+    class : logging.handlers.RotatingFileHandler
+    maxBytes: 1024
+    backupCount: 3
+    formatter: simple
+    level   : INFO
+    filename: app.log
+    mode: a
+
+
+root:
+  level: INFO
+  handlers: [console,file]
