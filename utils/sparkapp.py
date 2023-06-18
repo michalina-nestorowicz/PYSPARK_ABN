@@ -5,7 +5,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class SparkApp():
-    def __init__(self, app_name: str, spark_config):
+    def __init__(self, app_name: str):
         self.app_name = app_name
 
     def __enter__(self):

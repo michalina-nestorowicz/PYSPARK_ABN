@@ -4,3 +4,11 @@ assignment/*
 .vscode/*
 ./pytest_cache
 *.pyc
+
+# Sphinx documentation
+doc/_build/*
+doc/_static/
+doc/_templates
+
+doc/MakeFile
+doc/make.bat

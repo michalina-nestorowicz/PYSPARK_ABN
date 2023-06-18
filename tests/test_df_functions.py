@@ -1,8 +1,7 @@
-import utils.df_functions as functions
-import chispa
+from utils.dfapp import DFApp
 from pyspark.sql import SparkSession
 
-spark = (SparkSession.builder.master("local").appName("chispa").getOrCreate())
+spark = (SparkSession.builder.master("local[*]").appName("chispa").getOrCreate())
 
 
 def test_rename_data():

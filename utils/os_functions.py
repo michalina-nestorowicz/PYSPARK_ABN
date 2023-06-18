@@ -1,10 +1,16 @@
 import argparse
 import logging
 import os
+from typing import List
 
 logger = logging.getLogger(__name__)
 
 def get_arguments():
+    """Functions parses arguments provided by command line to correct variable
+
+    :return: _description_
+    :rtype: _type_
+    """
     logger.info(f'Acquiring arguments')
     parser = argparse.ArgumentParser()
     parser.add_argument('--one', type=str, required=True, help = 'first dataset')
