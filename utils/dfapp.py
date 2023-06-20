@@ -20,7 +20,7 @@ class DFApp():
 
         for key, value in column_to_rename_dict.items():
             self.df = self.df.withColumnRenamed(key, value)
-
+        return self.df
 
     def filter_data(self, columns_to_filter: Dict[str,str]) -> pyspark.sql.DataFrame:
         """Method filters specific columns in Dataframe. Filters data from the given dictionary. It uses key as a column
@@ -33,6 +33,7 @@ class DFApp():
         """
         for key, value in columns_to_filter.items():
             self.df = self.df.filter(col(key).isin(value))
+        return self.df
 
 
     def select_data(self, columns_to_select: List) -> pyspark.sql.DataFrame:
@@ -44,4 +45,5 @@ class DFApp():
         :rtype: pyspark.sql.DataFrame
         """
         self.df = self.df.select(*columns_to_select)
+        return self.df
 
