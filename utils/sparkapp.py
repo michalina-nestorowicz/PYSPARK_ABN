@@ -6,9 +6,15 @@ logger = logging.getLogger(__name__)
 
 class SparkApp():
     def __init__(self, app_name: str):
+        """ Initialize spark instance
+
+        :param app_name: name of the spark application
+        :type app_name: str
+        """
         self.app_name = app_name
 
     def __enter__(self):
+        """ Method for entering context manager"""
         logger.info(f'Initiating spark instance')
         self.session = (SparkSession.builder
                         .appName(self.app_name)
@@ -20,6 +26,7 @@ class SparkApp():
         return self
     
     def __exit__(self,exc_type = None, exc_val = None, exc_tb = None):
+        """Method for exiting context manager"""
         if exc_type is not None:
             logger.error(f'Interrupting spark instance execution')
         else:
@@ -27,7 +34,14 @@ class SparkApp():
         self.session.stop()
         logger.info(f'Stoppped spark instance')
 
-    def read(self,path) -> DataFrame:
+    def read(self,path: str) -> DataFrame:
+        """Method for reading a CSV file into a DataFrame.
+
+        :param path: path to the CSV file
+        :type path: str
+        :return: The DataFrame created from the CSV file
+        :rtype: DataFrame
+        """
         df =  (self.session
             .read
             .option("sep", ",")
