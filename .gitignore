@@ -8,3 +8,7 @@ assignment/*
 doc/_build/*
 doc/_static/
 doc/_templates
+
+
+dist
+Codac.egg-info

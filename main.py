@@ -19,10 +19,14 @@ def main():
 
     with open (f'./config/df.yml') as cs:
         df_config = yaml.safe_load(cs)
+        logging.info(f'Loaded config file {cs}')
+    
     
     with SparkApp('Codac') as spark:
         df_one = DFApp(spark.read(path_one))
+        logging.info('Created DataFrame from dataset one')
         df_two = DFApp(spark.read(path_two))
+        logging.info('Created DataFrame from dataset two')
         
         column_to_rename_dict = df_config['column_to_rename_dict']
         selected_columns_df_one = df_config['selected_columns_df_one']
@@ -31,10 +35,13 @@ def main():
         df_one.select_data(selected_columns_df_one)
         df_two.select_data(selected_columns_df_two)
         df_one.filter_data(columns_to_filter)
+        logging.info(f'Dataframes data filtered')
         joined_df = DFApp(df_one.df.join(df_two.df, ['id']))
         joined_df.rename_data(column_to_rename_dict)
+        logging.info(f'Dataframes joined by id column')
         results_path = os.path.join(os.getcwd(), 'client_data')
         joined_df.df.coalesce(1).write.option('header', 'true').format('csv').mode('overwrite').save(results_path)
+        logging.info(f'Dataframes data save to: {results_path}')
 
         
 if __name__ =='__main__':

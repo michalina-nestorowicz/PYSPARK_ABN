@@ -40,4 +40,3 @@ jobs:
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "doc/"
-    
