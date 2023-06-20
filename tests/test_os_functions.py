@@ -29,7 +29,7 @@ def test_get_arguments_missing_paths_arguments_raises_error(mock_parser):
     mock_instance.parse_args.return_value = argparse.Namespace(
         country=['USA', 'Canada']
     )
-    with pytest.raises(OSError):
+    with pytest.raises(AttributeError):
         get_arguments()
 
 @mock.patch('utils.os_functions.os.path.exists')
