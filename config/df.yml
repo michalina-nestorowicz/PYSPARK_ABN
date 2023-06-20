@@ -1,0 +1,3 @@
+column_to_rename_dict: {'cc_t': 'credit_card_type','id': 'client_identifier','btc_a': 'bitcoin_address'}
+selected_columns_df_one: ['id', 'email', 'country']
+selected_columns_df_two: ['id','btc_a','cc_t']
