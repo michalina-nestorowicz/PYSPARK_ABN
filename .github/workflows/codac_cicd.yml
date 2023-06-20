@@ -37,7 +37,7 @@ jobs:
         pip install build
         python -m build
         
-    -uses: ammaraskar/sphinx-action@master
+    - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "doc/"
     
