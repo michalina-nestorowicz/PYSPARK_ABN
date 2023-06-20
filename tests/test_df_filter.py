@@ -6,11 +6,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 class TestDFFilterApp:
-    """_summary_
-
-    :return: _description_
-    :rtype: _type_
-    """
     spark = None
     headers = ['column1','column2','column3']
 

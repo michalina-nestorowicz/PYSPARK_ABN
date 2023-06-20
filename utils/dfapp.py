@@ -24,7 +24,7 @@ class DFApp():
 
     def filter_data(self, columns_to_filter: Dict[str,str]) -> pyspark.sql.DataFrame:
         """Method filters specific columns in Dataframe. Filters data from the given dictionary. It uses key as a column
-     name, and value as a list that column value should be equal to
+        name, and value as a list that column value should be equal to
 
         :param columns_to_filter:  Dictionary with key as column name and value is a list that column value should be equal to
         :type columns_to_filter: Dict[str,str]
