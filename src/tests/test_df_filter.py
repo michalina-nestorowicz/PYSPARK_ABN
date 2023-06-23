@@ -1,6 +1,6 @@
 import pytest
 import chispa
-from src.codac_spark.utils.dfapp import DFApp
+from codac_spark.utils.dfapp import DFApp
 from pyspark.sql import SparkSession
 import logging 
 
@@ -52,7 +52,7 @@ class TestDFFilterApp:
 
 
     def test_filter_df_return_filtered_two_columns(self,expected_df_1_row,source_df):
-        data_to_filter = {'column2': ['country1', 'country4'], 'column3':'account_type_1'}
+        data_to_filter = {'test2': ['country1', 'country4'], 'test3':'account_type_1'}
         source_df_app = DFApp(source_df)
         test_df_app_filtered_two_column = source_df_app.filter_data(data_to_filter)
 

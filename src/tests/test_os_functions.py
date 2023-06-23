@@ -1,7 +1,7 @@
 import pytest
 import argparse
 import logging 
-from src.utils.os_functions import get_arguments, check_file_correct
+from codac_spark.utils.os_functions import get_arguments, check_file_correct
 from unittest import mock
 
 logger = logging.getLogger(__name__)
@@ -34,7 +34,7 @@ def test_get_arguments_missing_paths_arguments_raises_error(mock_parser):
         get_arguments()
 
 
-@mock.patch('src.utils.os_functions.os.path.exists')
+@mock.patch('codac_spark.utils.os_functions.os.path.exists')
 def test_check_file_correct(mock_exists):
     mock_exists.return_value = True
     path_list = ['/path/to/file1.txt', '/path/to/file2.txt']
@@ -42,7 +42,7 @@ def test_check_file_correct(mock_exists):
     assert check_file_correct(path_list, file_format) is None
 
 
-@mock.patch('src.utils.os_functions.os.path.exists')
+@mock.patch('codac_spark.utils.os_functions.os.path.exists')
 def test_check_file_not_exists_raises_error(mock_exists):
     mock_exists.return_value = False
     path_list = ['/path/to/file1.txt', '/path/to/file2.txt']
@@ -51,7 +51,7 @@ def test_check_file_not_exists_raises_error(mock_exists):
         check_file_correct(path_list, file_format)
 
 
-@mock.patch('src.utils.os_functions.os.path.exists')
+@mock.patch('codac_spark.utils.os_functions.os.path.exists')
 def test_check_file_format_not_correct_raises_error(mock_exists):
     mock_exists.return_value = True
     path_list = ['/path/to/file1.txt', '/path/to/file2.txt']

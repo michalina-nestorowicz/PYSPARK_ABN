@@ -1,6 +1,6 @@
 import pytest
 import chispa
-from src.utils.dfapp import DFApp
+from codac_spark.utils.dfapp import DFApp
 from pyspark.sql import SparkSession
 import logging 
 
@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 class TestDFApp:
     spark = None
     source_headers = ['test1', 'test2', 'test3']
-    source_data = [['value1', 'value2', 'value3']]
+    source_data = [[1, 'country1', 'account_type_1']]
     renamed_headers = ['New1', 'New2', 'New3']
 
     @classmethod
