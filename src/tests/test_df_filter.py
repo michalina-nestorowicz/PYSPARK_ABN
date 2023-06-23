@@ -1,6 +1,6 @@
 import pytest
 import chispa
-from codac_spark.utils.dfapp import DFApp
+from src.codac_spark.utils.dfapp import DFApp
 from pyspark.sql import SparkSession
 import logging 
 

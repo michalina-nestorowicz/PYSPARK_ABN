@@ -1,12 +1,12 @@
 import pytest
 import argparse
 import logging 
-from codac_spark.utils.os_functions import get_arguments, check_file_correct
+from src.codac_spark.utils.os_functions import get_arguments, check_file_correct
 from unittest import mock
 
 logger = logging.getLogger(__name__)
 
-@mock.patch('argparse.ArgumentParser')
+@mock.patch('src.codac_spark.utils.os_functions.argparse.ArgumentParser')
 def test_get_arguments_valid_arguments(mock_parser):
     mock_instance = mock_parser.return_value
     mock_parser.add_argument = mock.Mock()
@@ -22,7 +22,7 @@ def test_get_arguments_valid_arguments(mock_parser):
     assert result == expected_result
 
 
-@mock.patch('argparse.ArgumentParser')
+@mock.patch('src.codac_spark.utils.os_functions.argparse.ArgumentParser')
 def test_get_arguments_missing_paths_arguments_raises_error(mock_parser):
     mock_instance = mock_parser.return_value
     mock_parser.add_argument = mock.Mock()
@@ -34,7 +34,7 @@ def test_get_arguments_missing_paths_arguments_raises_error(mock_parser):
         get_arguments()
 
 
-@mock.patch('codac_spark.utils.os_functions.os.path.exists')
+@mock.patch('src.codac_spark.utils.os_functions.os.path.exists')
 def test_check_file_correct(mock_exists):
     mock_exists.return_value = True
     path_list = ['/path/to/file1.txt', '/path/to/file2.txt']
@@ -42,7 +42,7 @@ def test_check_file_correct(mock_exists):
     assert check_file_correct(path_list, file_format) is None
 
 
-@mock.patch('codac_spark.utils.os_functions.os.path.exists')
+@mock.patch('src.codac_spark.utils.os_functions.os.path.exists')
 def test_check_file_not_exists_raises_error(mock_exists):
     mock_exists.return_value = False
     path_list = ['/path/to/file1.txt', '/path/to/file2.txt']
@@ -51,7 +51,7 @@ def test_check_file_not_exists_raises_error(mock_exists):
         check_file_correct(path_list, file_format)
 
 
-@mock.patch('codac_spark.utils.os_functions.os.path.exists')
+@mock.patch('src.codac_spark.utils.os_functions.os.path.exists')
 def test_check_file_format_not_correct_raises_error(mock_exists):
     mock_exists.return_value = True
     path_list = ['/path/to/file1.txt', '/path/to/file2.txt']
