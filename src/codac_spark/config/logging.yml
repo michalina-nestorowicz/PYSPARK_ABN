@@ -15,11 +15,11 @@ handlers:
 
   file:
     class : logging.handlers.RotatingFileHandler
-    maxBytes: 1024
+    maxBytes: 2048
     backupCount: 3
     formatter: simple
     level   : INFO
-    filename: app.log
+    filename: logs/app.log
     mode: a
 
 

@@ -1,11 +1,12 @@
 import pytest
 import chispa
-from utils.dfapp import DFApp
+from src.utils.dfapp import DFApp
 from pyspark.sql import SparkSession
 import logging 
+
 logger = logging.getLogger(__name__)
 
-class TestDFRenameApp:
+class TestDFApp:
     spark = None
     source_headers = ['test1', 'test2', 'test3']
     source_data = [['value1', 'value2', 'value3']]
@@ -32,19 +33,22 @@ class TestDFRenameApp:
         source_df_app = DFApp(self.source_df)
         renamed_columns_dict_one = {'test1': 'new'}
         test_df_app_one = source_df_app.rename_data(renamed_columns_dict_one)
-        chispa.assert_df_equality(renamed_one_df, test_df_app_one)
+
+        chispa.assert_df_equality(renamed_one_df, test_df_app_one,  ignore_row_order=True)
 
     def test_rename_data_all_columns_change_all(self, renamed_all_df):
         source_df_app = DFApp(self.source_df)
         renamed_columns_dict_all = {self.source_headers[i]: self.renamed_headers[i] for i in range(len(self.source_headers))}
         test_df_app_all = source_df_app.rename_data(renamed_columns_dict_all)
-        chispa.assert_df_equality(renamed_all_df, test_df_app_all)
+
+        chispa.assert_df_equality(renamed_all_df, test_df_app_all,  ignore_row_order=True)
 
     def test_rename_no_column_no_change(self):
          source_df_app = DFApp(self.source_df)
          renamed_wrong_column = {'wrong': 'wrong_new_name'}
          test_df_app_none = source_df_app.rename_data(renamed_wrong_column)
-         chispa.assert_df_equality(self.source_df, test_df_app_none)
+
+         chispa.assert_df_equality(self.source_df, test_df_app_none,  ignore_row_order=True)
 
 
    
