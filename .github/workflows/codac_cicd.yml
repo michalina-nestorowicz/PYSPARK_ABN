@@ -30,7 +30,14 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest
+        python -m pytest
+    
+    - name: Lint with flake8
+      run: |
+        # stop the build if Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-line-length=127 --statistics
   
     - name: Create package
       run: |
@@ -39,4 +46,4 @@ jobs:
         
     - uses: ammaraskar/sphinx-action@master
       with:
-        docs-folder: "doc/"
+        docs-folder: "src/doc/"

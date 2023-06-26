@@ -5,10 +5,13 @@ assignment/*
 ./pytest_cache
 *.pyc
 
-doc/_build/*
-doc/_static/
-doc/_templates
+*/doc/_build*
+*/doc/_static/
+*/doc/_templates
 
 
 dist
 Codac.egg-info
+
+
+src/codac_spark/doc/_build/*

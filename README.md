@@ -26,7 +26,7 @@ For application to work properly, user needs to provide:
 
 To run an application run this command in root directory
 
-    > python3.7 main.py  --personal 'personal_data.csv'  --financial 'financial_data.csv'  --country 'country1','country2' ...
+    > python3.7 main.py  --personal 'personal_data.csv'  --financial 'financial_data.csv'  --country 'country1' 'country2' ...
 
 ### Example:
 
