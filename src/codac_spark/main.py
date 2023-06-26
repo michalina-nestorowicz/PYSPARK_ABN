@@ -3,9 +3,9 @@ import os
 from typing import List, Dict
 from dataclasses import dataclass
 import yaml
-from utils.os_functions import get_arguments, check_file_correct
-from utils.dfapp import DFApp
-from utils.sparkapp import SparkApp
+from codac_spark.utils.os_functions import get_arguments, check_file_correct
+from codac_spark.utils.dfapp import DFApp
+from codac_spark.utils.sparkapp import SparkApp
 
 logger = logging.getLogger(__name__)
 
