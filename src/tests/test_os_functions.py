@@ -1,16 +1,17 @@
 import pytest
 import argparse
-import logging 
+import logging
 from src.codac_spark.utils.os_functions import get_arguments, check_file_correct
 from unittest import mock
 
 logger = logging.getLogger(__name__)
 
+
 @mock.patch('src.codac_spark.utils.os_functions.argparse.ArgumentParser')
 def test_get_arguments_valid_arguments(mock_parser):
     mock_instance = mock_parser.return_value
     mock_parser.add_argument = mock.Mock()
-    
+
     mock_instance.parse_args.return_value = argparse.Namespace(
         personal='personal_data.csv',
         financial='financial_data.csv',
@@ -26,7 +27,7 @@ def test_get_arguments_valid_arguments(mock_parser):
 def test_get_arguments_missing_paths_arguments_raises_error(mock_parser):
     mock_instance = mock_parser.return_value
     mock_parser.add_argument = mock.Mock()
-    
+
     mock_instance.parse_args.return_value = argparse.Namespace(
         country=['USA', 'Canada']
     )
