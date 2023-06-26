@@ -24,15 +24,15 @@ For application to work properly, user needs to provide:
 
 ## Run
 
-To run an application run this command in root directory
+To run this application, after installing package, run this command in root directory
 
-    > python3.7 main.py  --personal 'personal_data.csv'  --financial 'financial_data.csv'  --country 'country1' 'country2' ...
+    > Codac  --personal 'personal_data.csv'  --financial 'financial_data.csv'  --country 'country1' 'country2' ...
 
 ### Example:
 
-    > python3.7 main.py  --personal ./raw_data/dataset_one.csv  --financial ./raw_data/dataset_two.csv  --country 'United Kingdom' 'Neatherlands'
+    > Codac  --personal ./raw_data/dataset_one.csv  --financial ./raw_data/dataset_two.csv  --country 'United Kingdom' 'Netherlands'
 
-Only country argument is optional and defaults to *"Neatherlands"*. If paths to files are not provided or are incorrect, application returns OSError.
+Only country argument is optional and defaults to *"Netherlands"*. If paths to files are not provided or are incorrect, application returns OSError.
 
 
 ## Output

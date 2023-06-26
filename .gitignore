@@ -15,3 +15,4 @@ Codac.egg-info
 
 
 src/codac_spark/doc/_build/*
+*client_data*
