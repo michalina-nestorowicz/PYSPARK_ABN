@@ -41,7 +41,6 @@ jobs:
   
     - name: Create package
       run: |
-        pip install build
         python -m build
         
     - uses: ammaraskar/sphinx-action@master
