@@ -45,6 +45,15 @@ class DFConfig:
         return DFConfig(column_to_rename_dict, selected_columns_df_one,
                         selected_columns_df_two, columns_to_filter)
 
+def logging_config_setup():
+        # open logging config
+    with open('src/codac_spark/config/logging.yml') as cf:
+        try:
+            logging_conf = yaml.safe_load(cf)
+        except yaml.YAMLError as exc:
+            logging.error(f'Error while parsing YAML file: {exc}')
+        logging.config.dictConfig(logging_conf)
+
 
 def main():
     """ Main function. Here function gets arguments provided by user
@@ -53,6 +62,7 @@ def main():
     selects only necessary columns in both dataFrames and joins both dataframes.
     Saves final dataframe in client_data folder.
     """
+    logging_config_setup()
     list_countries, path_one, path_two = get_arguments()
     check_file_correct(path_list=[path_one, path_two], format='csv')
     config = DFConfig.load_config(config_path='src/codac_spark/config/df.yml', list_countries=list_countries)
@@ -78,11 +88,4 @@ def main():
 
 
 if __name__ == '__main__':
-    with open('src/codac_spark/config/logging.yml') as cf:
-        try:
-            logging_conf = yaml.safe_load(cf)
-        except yaml.YAMLError as exc:
-            logging.error(f'Error while parsing YAML file: {exc}')
-        logging.config.dictConfig(logging_conf)
-
-        main()
+    main()

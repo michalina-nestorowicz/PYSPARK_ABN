@@ -19,7 +19,7 @@ handlers:
     backupCount: 3
     formatter: simple
     level   : INFO
-    filename: logs/app.log
+    filename: ./logs/app.log
     mode: a
 
 
