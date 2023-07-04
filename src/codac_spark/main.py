@@ -45,8 +45,9 @@ class DFConfig:
         return DFConfig(column_to_rename_dict, selected_columns_df_one,
                         selected_columns_df_two, columns_to_filter)
 
+
 def logging_config_setup():
-        # open logging config
+    # open logging config
     with open('src/codac_spark/config/logging.yml') as cf:
         try:
             logging_conf = yaml.safe_load(cf)
